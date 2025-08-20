@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login | Student Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .login-container {
+            background: linear-gradient(135deg, #4ecdc4, #3dbbb3);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .login-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .login-title {
+            color: #2c3e50;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .form-control {
+            height: 50px;
+            border-radius: 8px;
+            margin-bottom: 1.2rem;
+        }
+        .btn-login {
+            background-color: #4ecdc4;
+            border: none;
+            color: white;
+            padding: 12px;
+            width: 100%;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-login:hover {
+            background-color: #3dbbb3;
+            transform: translateY(-2px);
+        }
+        .btn-signup {
+            background-color: #f8f9fa;
+            border: 1px solid #4ecdc4;
+            color: #4ecdc4;
+            padding: 12px;
+            width: 100%;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        .btn-signup:hover {
+            background-color: #e9ecef;
+            color: #3dbbb3;
+        }
+        .form-label {
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        .forgot-password {
+            text-align: right;
+            margin-bottom: 1rem;
+        }
+        .forgot-password a {
+            color: #6c757d;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .forgot-password a:hover {
+            color: #4ecdc4;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <h2 class="login-title">Student Login</h2>
+
+            <!-- Optional error message -->
+            <div th:if="${error}" class="alert alert-danger text-center" role="alert" style="margin-bottom: 1rem;">
+                <span th:text="${error}"></span>
+            </div>
+            
+            <form th:action="@{/student/login}" method="post">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                
+                <div class="forgot-password">
+                    <a href="#">Forgot Password?</a>
+                </div>
+                
+                <button type="submit" class="btn btn-login">Login</button> 
+                <a th:href="@{/student/signup}" class="btn btn-signup mt-3 text-center d-block">Sign Up</a>
+                <div class="text-center mt-3">
+                    <a th:href="@{/}" style="color: #6c757d; text-decoration: none;">
+                        <i class="fas fa-arrow-left"></i> Back to Welcome Page
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
